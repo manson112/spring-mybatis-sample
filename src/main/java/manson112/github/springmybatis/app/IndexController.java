@@ -3,7 +3,6 @@ package manson112.github.springmybatis.app;
 import lombok.RequiredArgsConstructor;
 import manson112.github.springmybatis.app.domain.MybatisTestEntity;
 import manson112.github.springmybatis.app.mapper.TestMybatisMapper;
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
