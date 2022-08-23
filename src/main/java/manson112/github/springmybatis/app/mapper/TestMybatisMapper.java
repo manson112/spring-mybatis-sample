@@ -15,4 +15,7 @@ public interface TestMybatisMapper {
     @Select("select * from tb_mybatis_test where id=#{id}")
     public MybatisTestEntity findById(@Param("id") String id);
 
+    public List<MybatisTestEntity> findAllXml();
+
+    public MybatisTestEntity findByIdXml(@Param("id") String id);
 }
