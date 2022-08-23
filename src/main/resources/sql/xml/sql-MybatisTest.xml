@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="manson112.github.springmybatis.app.mapper.TestMybatisMapper">
+    <select id="findAllXml" resultType="manson112.github.springmybatis.app.domain.MybatisTestEntity">
+        select *
+          from tb_mybatis_test
+    </select>
+
+    <select id="findByIdXml" parameterType="java.lang.String" resultType="manson112.github.springmybatis.app.domain.MybatisTestEntity">
+        select *
+          from tb_mybatis_test
+         where id = #{id}
+    </select>
+
+</mapper>
