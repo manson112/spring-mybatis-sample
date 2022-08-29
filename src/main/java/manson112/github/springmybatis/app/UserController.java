@@ -2,6 +2,7 @@ package manson112.github.springmybatis.app;
 
 import lombok.RequiredArgsConstructor;
 import manson112.github.springmybatis.app.dto.OrgDto;
+import manson112.github.springmybatis.app.dto.User;
 import manson112.github.springmybatis.app.dto.UserDto;
 import manson112.github.springmybatis.app.dto.UserOrgDto;
 import manson112.github.springmybatis.app.service.UserService;
@@ -24,6 +25,16 @@ public class UserController {
     @GetMapping("/user/{userId}")
     public UserDto findUserById(@PathVariable String userId) {
         return userService.findUserById(userId);
+    }
+
+    @GetMapping("/users/org")
+    public List<UserOrgDto> findUsersWithOrg() {
+        return userService.findUsersWithOrg();
+    }
+
+    @GetMapping("/users")
+    public List<User> findAllUserInfo() {
+        return userService.findAllUserInfo();
     }
 
 }

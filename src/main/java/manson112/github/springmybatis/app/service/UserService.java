@@ -1,6 +1,7 @@
 package manson112.github.springmybatis.app.service;
 
 import lombok.RequiredArgsConstructor;
+import manson112.github.springmybatis.app.dto.User;
 import manson112.github.springmybatis.app.dto.UserDto;
 import manson112.github.springmybatis.app.dto.UserOrgDto;
 import manson112.github.springmybatis.app.mapper.UserMapper;
@@ -13,12 +14,19 @@ import java.util.List;
 public class UserService {
     private final UserMapper userMapper;
 
-
     public List<UserDto> findAllUser() {
         return userMapper.findAllUser();
     }
 
     public UserDto findUserById(String userId) {
         return userMapper.findUserById(userId);
+    }
+
+    public List<UserOrgDto> findUsersWithOrg() {
+        return userMapper.findUsersWithOrg();
+    }
+
+    public List<User> findAllUserInfo() {
+        return userMapper.findAllUserInfo();
     }
 }

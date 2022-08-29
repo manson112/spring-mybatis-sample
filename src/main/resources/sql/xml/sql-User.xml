@@ -2,6 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="manson112.github.springmybatis.app.mapper.UserMapper">
+    <resultMap id="userResultMap" type="manson112.github.springmybatis.app.dto.User">
+        <id column="user_id" property="userId" javaType="int"/>
+        <result column="user_name" property="userName"/>
+        <association property="org" javaType="manson112.github.springmybatis.app.dto.Org">
+            <id column="org_id" property="orgId" javaType="int"/>
+            <result column="org_name" property="orgName"/>
+            <result column="horg_id" property="horgId" javaType="int"/>
+        </association>
+    </resultMap>
+
+    <select id="findUserByOrgId" resultType="manson112.github.springmybatis.app.dto.User">
+        select * from tb_user where org_id = #{id}
+    </select>
+
     <select id="findAllUser" resultType="manson112.github.springmybatis.app.dto.UserDto">
         select *
           from tb_user
@@ -11,5 +25,28 @@
         select *
           from tb_user
          where id = #{userId}
+    </select>
+
+    <select id="findUsersWithOrg" resultType="manson112.github.springmybatis.app.dto.UserOrgDto">
+        select a.id     as user_id,
+               a.name   as user_name,
+               b.id     as org_id,
+               b.org_name as org_name
+          from tb_user a
+          join tb_org  b
+            on a.org_id = b.id
+
+    </select>
+
+
+    <select id="findAllUserInfo" resultMap="userResultMap">
+        select  a.id     as user_id,
+                a.name   as user_name,
+                b.id     as org_id,
+                b.org_name as org_name,
+                b.horg_id
+          from  tb_user a
+          join  tb_org  b
+            on  a.org_id = b.id
     </select>
 </mapper>
